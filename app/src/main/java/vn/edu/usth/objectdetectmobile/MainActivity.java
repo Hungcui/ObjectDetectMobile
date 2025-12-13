@@ -1,50 +1,19 @@
 package vn.edu.usth.objectdetectmobile;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.Size;
-import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.activity.ComponentActivity;
-import androidx.annotation.NonNull;
-import androidx.annotation.OptIn;
-import androidx.camera.camera2.interop.Camera2CameraInfo;
-import androidx.camera.camera2.interop.ExperimentalCamera2Interop;
-import androidx.camera.core.Camera;
-import androidx.camera.core.CameraInfo;
-import androidx.camera.core.CameraSelector;
-import androidx.camera.core.ImageAnalysis;
-import androidx.camera.core.ImageProxy;
-import androidx.camera.core.Preview;
-import androidx.camera.lifecycle.ProcessCameraProvider;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.view.PreviewView;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.lifecycle.LifecycleOwner;
 
 // Non-deprecated resolution selector API
-import androidx.camera.core.resolutionselector.AspectRatioStrategy;
-import androidx.camera.core.resolutionselector.ResolutionSelector;
-import androidx.camera.core.resolutionselector.ResolutionStrategy;
 
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.switchmaterial.SwitchMaterial;
+import android.widget.ImageButton;
+import androidx.fragment.app.FragmentTransaction;
+import android.content.Intent;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import ai.onnxruntime.OrtException;
-
-public class MainActivity extends ComponentActivity {
+/*public class MainActivity extends ComponentActivity {
 
     // ---------------------------------------------------------------------------------------------
     //  Constants
@@ -708,4 +677,50 @@ public class MainActivity extends ComponentActivity {
         bindCameraUseCases();
         updateDepthModeLabel();
     }
+}*/
+public class MainActivity extends AppCompatActivity {
+
+    // UI views
+    private PreviewView previewView;
+    private OverlayView overlay;
+    private ImageButton buttonSettings;
+    private ImageButton buttonFix;
+    private ImageButton buttonGuide;
+    private SeekBar seekZoom;
+    private TextView textZoomValue;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        initViews();
+        ;
+    }
+
+    private void initViews() {
+        previewView = findViewById(R.id.previewView);
+        overlay = findViewById(R.id.overlay);
+        buttonSettings = findViewById(R.id.buttonSettings);
+        buttonFix = findViewById(R.id.buttonFix);
+        buttonGuide = findViewById(R.id.buttonGuide);
+        seekZoom = findViewById(R.id.seekZoom);
+        textZoomValue = findViewById(R.id.textZoomValue);
+
+        buttonGuide.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, Guide.class);
+            startActivity(intent);
+        });
+
+        buttonSettings.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, Settings.class);
+            startActivity(intent);
+        });
+
+        buttonFix.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, DistanceCalibration.class);
+            startActivity(intent);
+        });
+    }
+
 }

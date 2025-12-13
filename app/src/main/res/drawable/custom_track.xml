@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- Kích thước thanh -->
+    <size android:height="40dp"/>
+    <!-- Bo góc để thành dạng capsule -->
+    <corners android:radius="20dp"/>
+    <!-- Màu nền khi chưa bật -->
+    <solid android:color="#0ABD00"/>
+</shape>
