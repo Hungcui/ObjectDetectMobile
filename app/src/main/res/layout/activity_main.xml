@@ -1,10 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<androidx.camera.view.PreviewView
+    <androidx.camera.view.PreviewView
         android:id="@+id/previewView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,25 +17,30 @@
         android:id="@+id/overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clickable="false"/>
+        android:clickable="false" />
 
     <ImageButton
         android:id="@+id/buttonSettings"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_margin="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="50dp"
         android:background="@android:color/transparent"
         android:backgroundTint="@android:color/white"
         android:contentDescription="settings"
         android:src="@drawable/ic_settings"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/buttonDetectOnce" />
+        app:layout_constraintStart_toEndOf="@id/buttonDetectOnce"
+        app:layout_constraintEnd_toStartOf="@id/buttonToggleSettings"
+        app:layout_constraintHorizontal_bias="0.2" />
 
     <ImageButton
         android:id="@+id/buttonToggleSettings"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_margin="50dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="50dp"
         android:background="@android:color/transparent"
         android:backgroundTint="@android:color/white"
         android:src="@drawable/ic_quickset"
@@ -47,11 +54,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="12dp"
+        android:background="#66000000"
+        android:elevation="8dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:padding="12dp"
-        android:background="#66000000"
-        android:elevation="8dp"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/buttonToggleSettings"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,9 +68,9 @@
             android:id="@+id/switchRealtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/realtime_detection"
-            android:textColor="@android:color/white"
-            android:checked="true" />
+            android:textColor="@android:color/white" />
 
         <TextView
             android:id="@+id/textDepthMode"
@@ -79,27 +86,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:checked="true"
             android:text="@string/blur_toggle"
-            android:textColor="@android:color/white"
-            android:checked="true" />
+            android:textColor="@android:color/white" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switchStereo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:checked="false"
             android:text="@string/stereo_toggle"
-            android:textColor="@android:color/white"
-            android:checked="false" />
+            android:textColor="@android:color/white" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switchEnvironment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:checked="false"
             android:text="@string/environment_toggle"
-            android:textColor="@android:color/white"
-            android:checked="false" />
+            android:textColor="@android:color/white" />
 
         <TextView
             android:id="@+id/textCalibrationTitle"
@@ -115,8 +122,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:textColor="@android:color/white"
-            android:text="@string/depth_calibration_default" />
+            android:text="@string/depth_calibration_default"
+            android:textColor="@android:color/white" />
 
         <SeekBar
             android:id="@+id/seekCalibration"
@@ -133,21 +140,22 @@
             android:layout_marginTop="4dp"
             android:text="@string/depth_calibration_hint"
             android:textColor="@android:color/white" />
-
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonDetectOnce"
         style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:layout_margin="50dp"
-        android:singleLine="true"
-        android:ellipsize="none"
-        android:text="@string/single_detect"
-        android:textSize="18dp"
-        android:textColor="@color/black"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="50dp"
+        android:minWidth="120dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:backgroundTint="@color/white"
+        android:text="@string/single_detect"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
